@@ -95,3 +95,33 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     vim.cmd("bdelete!")
   end,
 })
+
+vim.keymap.set("n", "<leader>gx", function()
+  local url = vim.fn.expand("<cfile>")
+  vim.fn.jobstart({ "wslview", url }, { detach = true })
+end, { desc = "Abrir link en navegador (WSL)" })
+
+vim.keymap.set("n", "<leader>gz", function()
+  local file = vim.fn.expand("<cfile>")
+  if file:match("%.pdf$") then
+    vim.fn.jobstart({ "zathura", file }, { detach = true })
+  else
+    print("No es un archivo PDF: " .. file)
+  end
+end, { desc = "Abrir PDF con Zathura" })
+
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = "*.md",
+  callback = function()
+    vim.cmd("cd " .. vim.fn.expand("%:p:h"))
+  end,
+})
+
+vim.ui.open = function(path)
+  if path:match("%.pdf$") then
+    vim.fn.jobstart({ "zathura", path }, { detach = true })
+  else
+    -- fallback to xdg-open or wslview
+    vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+  end
+end

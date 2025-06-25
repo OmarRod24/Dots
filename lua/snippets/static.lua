@@ -39,3 +39,15 @@ ls.add_snippets("tex", {
     t("\\noindent"),
   }),
 })
+
+ls.add_snippets("tex", {
+  s(
+    "todo",
+    fmt(
+      [[
+      \TODO{{{}}} {}
+      ]],
+      { i(1), i(0) }
+    )
+  ),
+})

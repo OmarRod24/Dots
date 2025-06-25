@@ -433,3 +433,63 @@ ls.add_snippets("tex", {
     )
   ),
 })
+
+ls.add_snippets("tex", {
+  s(
+    { trig = "nrm", wordTrig = false, regTrig = true },
+    fmt(
+      [[
+      \norm{{{}}}{}
+      ]],
+      { i(1), i(0) }
+    )
+  ),
+})
+
+ls.add_snippets("tex", {
+  s(
+    { trig = "cir", wordTrig = false, regTrig = true },
+    fmt(
+      [[
+      ^{{\circ}} {}
+      ]],
+      { i(0) }
+    )
+  ),
+})
+
+ls.add_snippets("tex", {
+  s(
+    { trig = "hat", wordTrig = false, regTrig = true },
+    fmt(
+      [[
+      \hat{{{}}}{}
+      ]],
+      { i(1), i(0) }
+    )
+  ),
+})
+
+ls.add_snippets("tex", {
+  s(
+    { trig = "til", wordTrig = false, regTrig = true },
+    fmt(
+      [[
+      \tilde{{{}}}{}
+      ]],
+      { i(1), i(0) }
+    )
+  ),
+})
+
+ls.add_snippets("tex", {
+  s(
+    { trig = "pd", wordTrig = false, regTrig = true },
+    fmt(
+      [[
+      \pd{{{}}}{{{}}}{{{}}}{}
+      ]],
+      { i(1), i(2), i(3), i(0) }
+    )
+  ),
+})
